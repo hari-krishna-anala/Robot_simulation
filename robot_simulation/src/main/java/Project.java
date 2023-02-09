@@ -42,6 +42,30 @@ public class Project {
             if (currentMove.charAt(0) == 'M' || currentMove.charAt(0) == 'm') {
                 //It can break here. No clear requirements in the problem statement to handle it.
                 // TODO robot moving
+            	
+            	int numberOfSpaces = Integer.valueOf(currentMove.substring(2));
+                if (currentDirection == 1) {
+                    if (penState == 1) {
+                        Project.draw(outputArray, currentDirection, numberOfSpaces, x, y);
+                    }
+                    return new int[]{x + numberOfSpaces, y, currentDirection, penState};
+                } else if (currentDirection == 2) {
+                    if (penState == 1) {
+                        Project.draw(outputArray, currentDirection, numberOfSpaces, x, y);
+                    }
+                    return new int[]{x - numberOfSpaces, y, currentDirection, penState};
+                } else if (currentDirection == 3) {
+                    if (penState == 1) {
+                        Project.draw(outputArray, currentDirection, numberOfSpaces, x, y);
+                    }
+                    return new int[]{x, y - numberOfSpaces, currentDirection, penState};
+                } else if (currentDirection == 4) {
+                    if (penState == 1) {
+                        Project.draw(outputArray, currentDirection, numberOfSpaces, x, y);
+                    }
+                    return new int[]{x, y + numberOfSpaces, currentDirection, penState};
+                }
+
 
             }
         }
@@ -69,7 +93,23 @@ public class Project {
     }
 
     public static void printMyArray(int[][] arr) {
-        //TODO array printing
+    	int arrLen = arr.length;
+        int[][] finalArray = new int[arrLen][arrLen];
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if (arr[i][j] == 1) {
+                    finalArray[arrLen - 1 - i][j] = 1;
+                }
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                sb.append((finalArray[i][j] == 1 ? "*" : " ") + " ");
+            }
+            sb.append("\n");
+        }
+        System.out.println(sb);
     }
 
     public static void recurse(int[][] outputArray, int x, int y, int currentDirection, int upOrDown, List<String> inputArray, int currentIndexOfInputArray) {
