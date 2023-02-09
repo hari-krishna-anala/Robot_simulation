@@ -40,8 +40,7 @@ public class Project {
             return new int[]{x, y, Project.getDirection(currentDirection, currentMove), penState};
         } else if (currentMove.length() > 1) {
             if (currentMove.charAt(0) == 'M' || currentMove.charAt(0) == 'm') {
-                //It can break here. No clear requirements in the problem statement to handle it.
-                // TODO robot moving
+                
             	
             	int numberOfSpaces = Integer.valueOf(currentMove.substring(2));
                 if (currentDirection == 1) {
