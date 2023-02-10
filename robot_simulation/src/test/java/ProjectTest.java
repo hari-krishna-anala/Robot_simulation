@@ -152,6 +152,165 @@ public class ProjectTest {
         Project.printMyArray(outputArray);
         assertEquals(expected, outContent.toString());
     }
+    
+    @Test
+    public void intialCondition() {
+        List<String> inputArray = new ArrayList<>(Arrays.asList("I 10", "C","Q"));
+        String expected = "Position: 0, 0 - Pen: up - Facing: north\r\n";
+        Project.recurse(new int[0][0], 0, 0, 1, 0, inputArray, 0);
+        assertEquals(expected, outContent.toString());
+    }
+    @Test
+    public void recurseTestOne() {
+        List<String> inputArray = new ArrayList<>(Arrays.asList("I 10", "C", "D", "C", "M 4", "C", "R", "C", "M 3", "C", "P", "Q"));
+        String expected = "Position: 0, 0 - Pen: up - Facing: north\r\n" +
+                "Position: 0, 0 - Pen: down - Facing: north\r\n" +
+                "Position: 0, 4 - Pen: down - Facing: north\r\n" +
+                "Position: 0, 4 - Pen: down - Facing: east\r\n" +
+                "Position: 3, 4 - Pen: down - Facing: east\r\n" +
+                "                    \n" + 
+                "                    \n" + 
+                "                    \n" + 
+                "                    \n" +
+                "                    \n" + 
+                "* * * *             \n" + 
+                "*                   \n" + 
+                "*                   \n" +
+                "*                   \n" +
+                "*                   \n" +
+                "\r\n";
+        Project.recurse(new int[0][0], 0, 0, 1, 0, inputArray, 0);
+        assertEquals(expected, outContent.toString());
+    }
+
+    @Test
+    public void recurseTestTwo() {
+        List<String> inputArray = new ArrayList<>(Arrays.asList("I 10", "C", "D", "C", "M 4", "C", "R", "C", "M 3", "C", "P", "c", "r", "m 2", "p", "Q"));
+        String expected = "Position: 0, 0 - Pen: up - Facing: north\r\n" +
+                "Position: 0, 0 - Pen: down - Facing: north\r\n" +
+                "Position: 0, 4 - Pen: down - Facing: north\r\n" +
+                "Position: 0, 4 - Pen: down - Facing: east\r\n" +
+                "Position: 3, 4 - Pen: down - Facing: east\r\n" +
+                "                    \n" +
+                "                    \n" +
+                "                    \n" +
+                "                    \n" +
+                "                    \n" +
+                "* * * *             \n" +
+                "*                   \n" +
+                "*                   \n" +
+                "*                   \n" +
+                "*                   \n" +
+                "\r\n" +
+                "Position: 3, 4 - Pen: down - Facing: east\r\n" +
+                "                    \n" +
+                "                    \n" +
+                "                    \n" +
+                "                    \n" +
+                "                    \n" +
+                "* * * *             \n" +
+                "*     *             \n" +
+                "*     *             \n" +
+                "*                   \n" +
+                "*                   \n" + 
+                "\r\n";
+        Project.recurse(new int[0][0], 0, 0, 1, 0, inputArray, 0);
+        assertEquals(expected, outContent.toString());
+    }
+
+    @Test
+    public void recurseTestThree() {
+        List<String> inputArray = new ArrayList<>(Arrays.asList("I 10", "C", "D", "C", "M 4", "C", "R", "C", "M 3", "C", "P", "c", "r", "m 2", "p", "l", "m 3", "L", "m 5", "C", "p", "Q"));
+        String expected = "Position: 0, 0 - Pen: up - Facing: north\r\n" +
+                "Position: 0, 0 - Pen: down - Facing: north\r\n" +
+                "Position: 0, 4 - Pen: down - Facing: north\r\n" +
+                "Position: 0, 4 - Pen: down - Facing: east\r\n" +
+                "Position: 3, 4 - Pen: down - Facing: east\r\n" +
+                "                    \n" +
+                "                    \n" +
+                "                    \n" +
+                "                    \n" +
+                "                    \n" +
+                "* * * *             \n" +
+                "*                   \n" +
+                "*                   \n" +
+                "*                   \n" +
+                "*                   \n" +
+                "\r\n" +
+                "Position: 3, 4 - Pen: down - Facing: east\r\n" +
+                "                    \n" +
+                "                    \n" +
+                "                    \n" +
+                "                    \n" +
+                "                    \n" +
+                "* * * *             \n" +
+                "*     *             \n" +
+                "*     *             \n" +
+                "*                   \n" +
+                "*                   \n" +
+                "\r\n" +
+                "Position: 6, 7 - Pen: down - Facing: north\r\n" +
+                "                    \n" +
+                "                    \n" +
+                "            *       \n" +
+                "            *       \n" +
+                "            *       \n" +
+                "* * * *     *       \n" +
+                "*     *     *       \n" +
+                "*     * * * *       \n" +
+                "*                   \n" +
+                "*                   \n" +
+                "\r\n";
+        Project.recurse(new int[0][0], 0, 0, 1, 0, inputArray, 0);
+        assertEquals(expected, outContent.toString());
+    }
+    
+    @Test
+    public void recurseTestFour() {
+        List<String> inputArray = new ArrayList<>(Arrays.asList("I 10", "C", "C", "M 4", "C", "R", "C", "M 3", "C", "P", "Q"));
+        String expected = "Position: 0, 0 - Pen: up - Facing: north\r\n" +
+                "Position: 0, 0 - Pen: up - Facing: north\r\n" +
+                "Position: 0, 4 - Pen: up - Facing: north\r\n" +
+                "Position: 0, 4 - Pen: up - Facing: east\r\n" +
+                "Position: 3, 4 - Pen: up - Facing: east\r\n" +
+                "                    \n" + 
+                "                    \n" + 
+                "                    \n" + 
+                "                    \n" +
+                "                    \n" + 
+                "                    \n" + 
+                "                    \n" + 
+                "                    \n" +
+                "                    \n" +
+                "                    \n" +
+                "\r\n";
+        Project.recurse(new int[0][0], 0, 0, 1, 0, inputArray, 0);
+        assertEquals(expected, outContent.toString());
+    }
+    
+    @Test
+    public void recurseTestFive() {
+        List<String> inputArray = new ArrayList<>(Arrays.asList("I 10", "C", "C", "M 4", "C", "R", "C", "D", "M 3", "C", "P", "Q"));
+        String expected = "Position: 0, 0 - Pen: up - Facing: north\r\n" +
+                "Position: 0, 0 - Pen: up - Facing: north\r\n" +
+                "Position: 0, 4 - Pen: up - Facing: north\r\n" +
+                "Position: 0, 4 - Pen: up - Facing: east\r\n" +
+                "Position: 3, 4 - Pen: down - Facing: east\r\n" +
+                "                    \n" + 
+                "                    \n" + 
+                "                    \n" + 
+                "                    \n" +
+                "                    \n" + 
+                "* * * *             \n" + 
+                "                    \n" + 
+                "                    \n" +
+                "                    \n" +
+                "                    \n" +
+                "\r\n";
+        Project.recurse(new int[0][0], 0, 0, 1, 0, inputArray, 0);
+        assertEquals(expected, outContent.toString());
+    }
+
 
 
 
